@@ -49,9 +49,9 @@ classdef checksum
             tmp = uint16( bitxor( tmp, bitshift( tmp, 4 ) ) );
             
             % crcAccum = (crcAccum>>8) ^ (tmp<<8) ^ (tmp <<3) ^ (tmp>>4);
-            tmp1 = bitxor( bitshift( crc_accum, -8 ), bitshift( tmp, 8 ) );
-            tmp2 = bitxor( tmp1, bitshift( tmp, 3 ) );
-            crc_accum = bitxor( tmp2, bitshift( tmp, -4 ) );
+            A = bitxor( bitshift( crc_accum, -8 ), bitshift( tmp, 8 ) );
+            B = bitxor( bitshift( tmp, 3 ),  bitshift( tmp, -4 ) );
+            crc_accum = bitxor( A, B );
         end
     end
 end
