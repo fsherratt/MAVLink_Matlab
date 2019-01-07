@@ -1,33 +1,44 @@
-# MAVLink_Matlab
+# MAVLink Matlab Library
+
+**THIS IS CURRENTLY A WORK IN PROGRESS**
+
 This project aims to produce a native implementation of MAVLink for Matlab. That can be added to the autogeneration script within [MAVlink](https://github.com/mavlink/mavlink).
 
 ## Motivation
 A large amount of UAV research uses the ArduPilot code base very succesfully. Unlike the rest of the world the academic community is very heavily rooted in Matlab. The abscence of Matlab support from many parts of the ardupilot ecosystem is therefore notable.
 
-## Code Structure
-Each message is defined in it's own class inheriting from `mavlink_msg.m`. Each class contains getter/setters methods for each field and functions for parsing/packing message to their byte representation.
+## Implementation
+The program is intented to be a mixture of auto-generated and static files.
 
-Message headers contain all enums for their message set with `Mavlink.h` inheriting from all to allow easy access. Each header also contains a `get_message_type` function for identifying the correct message class from a msg id.
+### Static Files
+`mavlink_msg.h` contains all paramaters and methods common to every message types.
 
-A parse class is provided to converts incoming data stream into a cell array of message objects.
+`parse.m` provided methods to converts incoming data stream into message objects.
 
-*N.b this was written in 2018b so no gurantees of backwards compatibility*
+`xhecksum.m` implementation x25 CRC calculations.
 
-## Library Structure
-Messages are split into folders by message set defenitions with a header class per set.
+### Auto-Generated Files
+A seperate class is created for each message, all inherit from the parent `mavlink_msg.m` class. The class contains getter/setters for each field and methods for parsing/packing messages to their byte representation.
+
+Message headers contain all enums for their message set and a `get_message_type` method for obtaining a message class from its msg id.
+
+`mavlink.h` inheriting from all message set headers, provides access to all enums and and getter for class definitions.
+
+### Folder Structure
+Static files are kept at the top level with a folder for each message set. Each message set is formed of a header class and set of message classes. (*) indicates an auto-generated file.
 
     .
-    ├── mavlink.m
+    ├── mavlink.m (*)
     ├── checksum.m
     ├── mavlink_msg.m
     ├── parser.m
-    ├── common
-    │   ├── common.m
-    │   ├── mavlink_msg_heartbeat.m
+    ├── common (*)
+    │   ├── common.m (*)
+    │   ├── mavlink_msg_???.m (*)
     │   └── ...
-    ├── ardupilotmega
-    │   ├── ardupilotmega.m
-    │   ├── mavlink_msg_rangefinder.m
+    ├── ardupilotmega (*)
+    │   ├── ardupilotmega.m (*)
+    │   ├── mavlink_msg_???.m (*)
     │   └── ...
     └──...
 
@@ -38,3 +49,5 @@ Messages are split into folders by message set defenitions with a header class p
 
 ## Licence
 The source code is licenced under GNU General Public License v3.0
+
+*N.b all source code has been was written in 2018b so no gurantees of backwards compatibility*
