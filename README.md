@@ -2,7 +2,7 @@
 
 **THIS IS CURRENTLY A WORK IN PROGRESS**
 
-This project aims to produce a native Matlab implementation of MAVLink which can be added to mavgen in [pymavlink](https://github.com/ArduPilot/pymavlink/tree/master/generator).
+This project aims to produce a native Matlab implementation of MAVLink which can be added to mavgen in [pymavlink](https://github.com/ArduPilot/pymavlink/tree/master/generator). This repository will be used to store an example library to allow an overall structure to be agreed on.
 
 ## Motivation
 A large amount of UAV research uses the ArduPilot code base. Unlike the rest of the world the academic community is primarly uses Matlab. The abscence of Matlab support for ArduPilots communication language is therefore notable.
