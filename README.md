@@ -2,13 +2,13 @@
 
 **THIS IS CURRENTLY A WORK IN PROGRESS**
 
-This project aims to produce a native implementation of MAVLink for Matlab. That can be added to the autogeneration script within [MAVlink](https://github.com/mavlink/mavlink).
+This project aims to produce a native Matlab implementation of MAVLink which can be added to mavgen in [pymavlink](https://github.com/ArduPilot/pymavlink/tree/master/generator).
 
 ## Motivation
-A large amount of UAV research uses the ArduPilot code base very succesfully. Unlike the rest of the world the academic community is very heavily rooted in Matlab. The abscence of Matlab support from many parts of the ardupilot ecosystem is therefore notable.
+A large amount of UAV research uses the ArduPilot code base. Unlike the rest of the world the academic community is primarly uses Matlab. The abscence of Matlab support for ArduPilots communication language is therefore notable.
 
 ## Implementation
-The program is intented to be a mixture of auto-generated and static files.
+The program is intented to be implemented similarly to exsisting librarys through a mixture of static and auto-generated files. The current files and folder structure are described further below.
 
 ### Static Files
 `mavlink_msg.h` contains all paramaters and methods common to every message types.
