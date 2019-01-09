@@ -1,3 +1,6 @@
+% ardupilotmega.m - message set header for the 'ardupilotmega' mavlink set.
+% 
+% AUTO-GENERATED FILE. DO NOT MODIFY.
 classdef ardupilotmega
 
     properties(Constant)

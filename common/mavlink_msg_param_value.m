@@ -1,3 +1,4 @@
+% AUTO-GENERATED FILE. DO NOT MODIFY.
 classdef mavlink_msg_param_value < mavlink_msg
     properties (SetAccess = protected)
         prop_param_id    = char( zeros(1, 16) );

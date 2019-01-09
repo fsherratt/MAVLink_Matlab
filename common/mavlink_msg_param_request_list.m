@@ -1,3 +1,4 @@
+% AUTO-GENERATED FILE. DO NOT MODIFY.
 classdef mavlink_msg_param_request_list < mavlink_msg
     properties (SetAccess = protected)
         prop_target_system    = uint8( zeros(1, 1) );

@@ -1,13 +1,21 @@
-% MAVLink setup
+% Example: Request and store paramaters from an autopilot
+%   This script sends a PARAM_REQUEST_LIST message to the specfied
+%   autopilot then listens and stores the returned paramaters.
+
+% CHANGE THESE
+serial_port_name = 'COM1';
+serual_baud_rate = '57600';
+
 AP_sysid = 1; % Target device sysid
 AP_compid = 1;
+
+% DO NOT CHANGE BELOW THIS POINT
 parse = parser();
 
 % Open Serial Port
-s_port = serial( '/dev/tty.usbmodem01' );
-s_port.BaudRate = 57600;
+s_port = serial( serial_port_name );
+s_port.BaudRate = serual_baud_rate;
 s_port.InputBufferSize = 10000;
-
 
 fopen( s_port );
 flushinput( s_port );
@@ -20,6 +28,9 @@ parse.get_stats()
 fclose( s_port );
 
 clear AP_sysid AP_compid s_port
+
+% END OF SCRIPT
+
 
 function [parameters, parse] = get_parameters( serial_port, parse, ...
                                                             sysid, compid )

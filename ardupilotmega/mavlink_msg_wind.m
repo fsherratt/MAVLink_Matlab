@@ -1,3 +1,4 @@
+% AUTO-GENERATED FILE. DO NOT MODIFY.
 classdef mavlink_msg_wind < mavlink_msg
     properties (SetAccess = protected)
         prop_direction = single( zeros(1, 1) ); 

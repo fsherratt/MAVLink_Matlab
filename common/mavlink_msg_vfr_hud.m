@@ -1,3 +1,4 @@
+% AUTO-GENERATED FILE. DO NOT MODIFY.
 classdef mavlink_msg_vfr_hud < mavlink_msg
     properties (SetAccess = protected)
         prop_airspeed    = single( zeros(1, 1 ) );

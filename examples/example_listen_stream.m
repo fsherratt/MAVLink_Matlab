@@ -1,21 +1,28 @@
+% Example: Live MAVLink serial message decoding
+%   This script connects to a serial communication port and process 
+%   incoming serial data for 30 seconds, then disconnects
+
+% CHANGE THESE
+serial_port_name = 'COM1';
+serual_baud_rate = '57600';
+
+% DO NOT CHANGE BELOW THIS POINT
 parse = parser();
 
 % Open serial connection
-serialPortName = '/dev/tty.usbmodem01';
+s_port = serial( serial_port_name );
+s_port.BaudRate = serual_baud_rate;
+s_port.InputBufferSize = 10000;
 
-serialPort                 = serial( serialPortName );
-serialPort.BaudRate        = 57600;
-serialPort.InputBufferSize = 10000;
-
-fopen( serialPort );
-flushinput( serialPort );
+fopen( s_port );
+flushinput( s_port );
 
 t = tic;
 
 % Run for 30 seconds
 while toc(t) < 30 
-    if serialPort.BytesAvailable > 1000
-        b = fread( serialPort, serialPort.BytesAvailable );
+    if s_port.BytesAvailable > 1000
+        b = fread( s_port, s_port.BytesAvailable );
         
         % Add random errors to the data
 %         ix = randi( length(b), 10, 1 );
@@ -33,7 +40,7 @@ while toc(t) < 30
     end
 end
 
-fclose( serialPort );
+fclose( s_port );
 
 clear serialPortName serialPort t b msg i ix
 

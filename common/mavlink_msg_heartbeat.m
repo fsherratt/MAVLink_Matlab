@@ -1,3 +1,4 @@
+% AUTO-GENERATED FILE. DO NOT MODIFY.
 classdef mavlink_msg_heartbeat < mavlink_msg
     properties (SetAccess = protected)
         prop_type            = uint8( zeros(1, 1) );

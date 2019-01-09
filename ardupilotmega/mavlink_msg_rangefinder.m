@@ -1,3 +1,4 @@
+% AUTO-GENERATED FILE. DO NOT MODIFY.
 classdef mavlink_msg_rangefinder < mavlink_msg
     properties (SetAccess = protected)
         prop_distance = single( zeros(1, 1) );

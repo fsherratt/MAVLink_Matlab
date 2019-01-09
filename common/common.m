@@ -1,3 +1,6 @@
+% COMMON.m - message set header for the 'common' mavlink set.
+% 
+% AUTO-GENERATED FILE. DO NOT MODIFY.
 classdef common
     properties(Constant)
         COMMON_MAVLINK_MESSAGE_IDS =[0, 20, 21, 22, 74, 109, 253];

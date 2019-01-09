@@ -1,3 +1,4 @@
+% AUTO-GENERATED FILE. DO NOT MODIFY.
 classdef mavlink_msg_statustext < mavlink_msg
     properties (SetAccess = protected)
         prop_severity = uint8( zeros(1, 1) );
