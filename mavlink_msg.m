@@ -1,27 +1,29 @@
-classdef mavlink_msg
-    % MAVLINK_MSG parent class for all mavlink messages
-    %
-    % MAVLINK_MSG Methods:
-    %   MAVLINK_MSG - Constructor for a generic MAVLINK_MSG object
-    %   PACK - Convert mavlink object into a byte array 
-    %   CALC_CRC - Calculate the checksum for the message
-    %   SET_BYTES - Setter for byte field of object
-    %   SPLIT_PAYLOAD - Split message bytes out
-    %   CAST_FROM_BYTES - convert from uint8 to any data type
-    %   CAST_TO_BYTES - convert any data type to uint8
-    %   VALIDATE_INPUT - validate input matches type and len specified
-    %
-    % MAVLINK_MSG Properties:
-    %   MAV_BYTES - Raw bytes of message
-    %   MAV_LEN - Payload length (immutable)
-    %   MAV_SEQ - Sequence number
-    %   MAV_SYSID - System ID
-    %   MAV_COMPID - Component ID
-    %   MAV_MSGID - Message ID (immutable)
-    %   MAV_PAYLOAD - Raw payload bytes
-    %   MAV_CRC - Checksum value
-    %   MAV_CRC_EXTRA - CRC Extra value (immutable)
+% MAVLINK_MSG parent class for all mavlink messages. 
+%   This class contains paramaters and methods common to all mavlink 
+%   messages. 
+%
+% MAVLINK_MSG Methods:
+%   MAVLINK_MSG - Constructor for a generic MAVLINK_MSG object
+%   PACK - Convert mavlink object into a byte array 
+%   CALC_CRC - Calculate the checksum for the message
+%   SET_BYTES - Setter for byte field of object
+%   SPLIT_PAYLOAD - Split message bytes out
+%   CAST_FROM_BYTES - convert from uint8 to any data type
+%   CAST_TO_BYTES - convert any data type to uint8
+%   VALIDATE_INPUT - validate input matches type and len specified
+%
+% MAVLINK_MSG Properties:
+%   MAV_BYTES - Raw bytes of message
+%   MAV_LEN - Payload length (immutable)
+%   MAV_SEQ - Sequence number
+%   MAV_SYSID - System ID
+%   MAV_COMPID - Component ID
+%   MAV_MSGID - Message ID (immutable)
+%   MAV_PAYLOAD - Raw payload bytes
+%   MAV_CRC - Checksum value
+%   MAV_CRC_EXTRA - CRC Extra value (immutable)
     
+classdef mavlink_msg 
     properties (SetAccess = protected)
         mav_bytes  = uint8([]); % Raw bytes of message
         
@@ -74,7 +76,7 @@ classdef mavlink_msg
         %
         % SEE ALSO SET_BYTES, CALC_CRC
             bytes = zeros( 1, obj.mav_len + 8 );
-            bytes( 1:6 ) = [ mavlink.START_BYTE, obj.mav_len, ...
+            bytes( 1:6 ) = [ mavlink.START_VAL, obj.mav_len, ...
                              obj.mav_seq, obj.mav_sysid, ...
                              obj.mav_compid, obj.mav_msgid ];
             
@@ -150,7 +152,7 @@ classdef mavlink_msg
             
             obj.mav_payload = obj.mav_bytes( mavlink.PAYLOAD_BYTE: ...
                                   (mavlink.PAYLOAD_OFFSET + obj.mav_len) );
-
+            
             obj.mav_crc = typecast( obj.mav_bytes(end-1:end), 'uint16' );
         end
 

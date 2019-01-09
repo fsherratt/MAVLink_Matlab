@@ -1,16 +1,18 @@
+% PARSER data parse functions for mavlink byte data
+%   This class provides methods for converting mavlink byte data to mavlink
+%   message objects.
+%
+% PARSER Paramaters:
+%   MSG_TOTAL - Total messages recieved
+%   MSG_ERRORS - Total erroneous messages
+%   MSG_UNKNOWN - Total unknwon messages
+%
+% PARSER Methods:
+%   GET_STATS - Get parsing performance metrics
+%   BYTE_STREAM - Parse a data stream to mavlink messages.
+%   PARSE_MSG - Parse a single message in a byte array
+
 classdef parser
-    % PARSER data parse functions for mavlink byte streams
-    %
-    % PARSER Paramaters:
-    %   MSG_TOTAL - Total messages recieved
-    %   MSG_ERRORS - Total erroneous messages
-    %   MSG_UNKNOWN - Total unknwon messages
-    %
-    % PARSER Methods:
-    %   GET_STATS - Get parsing performance metrics
-    %   BYTE_STREAM - Parse a data stream to mavlink messages.
-    %   PARSE_MSG - Parse a single message in a byte array
-    
     properties (SetAccess = protected)
         msg_total = 0; % Total messages recieved
         msg_errors = 0; % Total erroneous messages
@@ -98,7 +100,7 @@ classdef parser
             msg = [];
             valid = mavlink.MAVLINK_FRAMING_INCOMPLETE;
             
-            msg_start = double( find( data == mavlink.START_BYTE, 1 ) );
+            msg_start = double( find( data == mavlink.START_VAL, 1 ) );
             
             % If msg start found and buffer is long enough continue
             if isempty( msg_start ) ...

@@ -1,12 +1,13 @@
-classdef checksum
-    % CHECKSUM data parse functions for mavlink byte streams
-    %
-    % CHECKSUM Methods:
-    %   CRC_CALCULATE - calculate the X25 checksum for a vector of bytes
-    %
-    % CHECKSUM Properties:
-    %   X25_INIT_CRC - Initial CRC value
+% CHECKSUM x25 checksum
+%   Implementation of the x25 Cyclic Redundancy Check
+%
+% CHECKSUM Methods:
+%   CRC_CALCULATE - calculate the X25 checksum for a vector of bytes
+%
+% CHECKSUM Properties:
+%   X25_INIT_CRC - Initial CRC value
     
+classdef checksum
     properties (Constant)
         X25_INIT_CRC = uint16( hex2dec( 'FFFF' ) )
     end
@@ -55,3 +56,5 @@ classdef checksum
         end
     end
 end
+
+% EOF
