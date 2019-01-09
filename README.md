@@ -11,18 +11,18 @@ A large amount of UAV research uses the ArduPilot code base. Unlike the rest of 
 The program is intented to be implemented similarly to exsisting librarys through a mixture of static and auto-generated files. The current files and folder structure are described further below.
 
 ### Static Files
-`mavlink_msg.h` contains all paramaters and methods common to every message types.
+`mavlink_msg.m` contains all paramaters and methods common to every message types.
 
 `parse.m` provided methods to converts incoming data stream into message objects.
 
-`xhecksum.m` implementation x25 CRC calculations.
+`checksum.m` implementation x25 CRC calculations.
 
 ### Auto-Generated Files
 A seperate class is created for each message, all inherit from the parent `mavlink_msg.m` class. The class contains getter/setters for each field and methods for parsing/packing messages to their byte representation.
 
-Message headers contain all enums for their message set and a `get_message_type` method for obtaining a message class from its msg id.
+For each message set a  header class, of the set's name, contain all message set enums is produced. The class also contains a `get_message_type` method for obtaining a message object from its msg id.
 
-`mavlink.h` inheriting from all message set headers, provides access to all enums and and getter for class definitions.
+`mavlink.m` inherits from every message set header providing consistent access to all enums and `get_message_type` method.
 
 ### Folder Structure
 Static files are kept at the top level with a folder for each message set. Each message set is formed of a header class and set of message classes. (*) indicates an auto-generated file.
