@@ -3,7 +3,8 @@
 % AUTO-GENERATED FILE. DO NOT MODIFY.
 classdef common
     properties(Constant)
-        COMMON_MAVLINK_MESSAGE_IDS =[0, 20, 21, 22, 74, 109, 253];
+        % Adicionar aqui IDs de mensagens novas tambem
+        COMMON_MAVLINK_MESSAGE_IDS =[0, 20, 21, 22, 33, 74, 109, 253];
 
         MAVLINK_MSG_ID_HEARTBEAT = 0;
         MAVLINK_MSG_ID_PARAM_REQUEST_READ = 20;
@@ -54,6 +55,9 @@ classdef common
         MAV_SEVERITY_NOTICE = 5;
         MAV_SEVERITY_INFO = 6;
         MAV_SEVERITY_DEBUG = 7;
+        
+        % Secao das adicionadas
+        MAVLINK_MSG_ID_GLOBAL_POSITION_INT = 33;
     end
 
     methods (Static)
@@ -73,6 +77,9 @@ classdef common
                     msg_type = mavlink_msg_radio_status();
                 case common.MAVLINK_MSG_ID_STATUSTEXT
                     msg_type = mavlink_msg_statustext(); 
+                % Mensagens adicionadas aqui    
+                case common.MAVLINK_MSG_ID_GLOBAL_POSITION_INT
+                    msg_type = mavlink_msg_global_position_int(); 
                 otherwise
                     msg_type = [];
             end
