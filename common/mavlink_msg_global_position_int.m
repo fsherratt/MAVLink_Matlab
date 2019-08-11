@@ -14,9 +14,9 @@ classdef mavlink_msg_global_position_int < mavlink_msg
     
     methods
         function obj = mavlink_msg_global_position_int()
-            len       = uint8( 29 );
+            len       = uint8( 28 );
             msgid     = uint8( 33 );
-            crc_extra = uint8( 220 );
+            crc_extra = uint8( 104 );
         
             obj = obj@mavlink_msg( msgid, len, crc_extra );
         end
@@ -25,7 +25,7 @@ classdef mavlink_msg_global_position_int < mavlink_msg
         function obj = split_payload( obj )
             obj = split_payload@mavlink_msg( obj );
         
-            obj.prop_time_boot_ms = obj.cast_from_bytes( obj.mav_payload(  1:4  ), 'uint32' );
+            obj.prop_time_boot_ms = obj.cast_from_bytes( obj.mav_payload(  1:4  ), 'uint32' ); % Testar com todos os crc extra e depois se nao der inverter esse parametro aqui
             obj.prop_lat          = obj.cast_from_bytes( obj.mav_payload(  5:8  ), 'int32'  );
             obj.prop_lon          = obj.cast_from_bytes( obj.mav_payload(  9:12 ), 'int32'  );
             obj.prop_alt          = obj.cast_from_bytes( obj.mav_payload( 13:16 ), 'int32'  );
@@ -33,7 +33,7 @@ classdef mavlink_msg_global_position_int < mavlink_msg
             obj.prop_vx           = obj.cast_from_bytes( obj.mav_payload( 21:22 ), 'int16'  );
             obj.prop_vy           = obj.cast_from_bytes( obj.mav_payload( 23:24 ), 'int16'  );
             obj.prop_vz           = obj.cast_from_bytes( obj.mav_payload( 25:26 ), 'int16'  );
-            obj.prop_hdg          = obj.cast_from_bytes( obj.mav_payload( 27:28 ), 'int16'  );
+            obj.prop_hdg          = obj.cast_from_bytes( obj.mav_payload( 27:28 ), 'uint16'  );
         end
         
         % Empacota em bytes para enviar

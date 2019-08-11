@@ -34,7 +34,15 @@ while toc(t) < 30
 %         fprintf( 'Valor vindo no heading: %.5f\n', v )
         
         for i = 1:length( msg )
-            fprintf( 'Msg (%d) %s\n', msg{i}.get_msgid(), class(msg{i}) );
+%             fprintf( 'Msg (%d) %s\n', msg{i}.get_msgid(), class(msg{i}) );
+            if msg{i}.get_msgid() == 33
+                gps = msg{i};
+                fprintf('Latitude: %.4f\t Longitude: %.4f\n', gps.get_prop_lat(), gps.get_prop_lon())
+                fprintf('Time:     %.4f\t Alt      : %.4f\n', gps.get_prop_time_boot_ms(), gps.get_prop_alt())
+                fprintf('Vx  :     %.4f\t Rel Alt:   %.4f\n', gps.get_prop_vx(), gps.get_prop_relative_alt())
+                fprintf('Vy  :     %.4f\t Vz     :   %.4f\n', gps.get_prop_vy(), gps.get_prop_vz())
+                fprintf('Heading:  %.4f \n\n\n', gps.get_prop_hdg)
+            end
         end
         
         stats = parse.get_stats();
