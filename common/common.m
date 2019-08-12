@@ -4,7 +4,7 @@
 classdef common
     properties(Constant)
         % Adicionar aqui IDs de mensagens novas tambem
-        COMMON_MAVLINK_MESSAGE_IDS =[0, 20, 21, 22, 33, 74, 109, 253];
+        COMMON_MAVLINK_MESSAGE_IDS =[0, 1, 20, 21, 22, 32, 74, 109, 253];
 
         MAVLINK_MSG_ID_HEARTBEAT = 0;
         MAVLINK_MSG_ID_PARAM_REQUEST_READ = 20;
@@ -58,6 +58,9 @@ classdef common
         
         % Secao das adicionadas
         MAVLINK_MSG_ID_GLOBAL_POSITION_INT = 33;
+        MAVLINK_MSG_ID_LOCAL_POSITION_NED  = 32;                % Accacio 12/08/2019 
+        MAVLINK_MSG_ID_SYS_STATUS          = 1;                 % Mathaus 12/08/2019 
+        
     end
 
     methods (Static)
@@ -80,6 +83,10 @@ classdef common
                 % Mensagens adicionadas aqui    
                 case common.MAVLINK_MSG_ID_GLOBAL_POSITION_INT
                     msg_type = mavlink_msg_global_position_int(); 
+                case common.MAVLINK_MSG_ID_LOCAL_POSITION_NED       % Accacio 12/08/2019
+                    msg_type = mavlink_msg_local_position_ned();                     
+               case common.MAVLINK_MSG_ID_SYS_STATUS              % Mathaus 12/08/2019
+                    msg_type = mavlink_msg_sys_status();                     
                 otherwise
                     msg_type = [];
             end
