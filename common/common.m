@@ -4,7 +4,7 @@
 classdef common
     properties(Constant)
         % Adicionar aqui IDs de mensagens novas tambem
-        COMMON_MAVLINK_MESSAGE_IDS =[0, 1, 20, 21, 22, 32, 74, 109, 253];
+        COMMON_MAVLINK_MESSAGE_IDS =[0, 1, 20, 21, 22, 30, 32, 62, 74, 109, 253];
 
         MAVLINK_MSG_ID_HEARTBEAT = 0;
         MAVLINK_MSG_ID_PARAM_REQUEST_READ = 20;
@@ -57,9 +57,11 @@ classdef common
         MAV_SEVERITY_DEBUG = 7;
         
         % Secao das adicionadas
-        MAVLINK_MSG_ID_GLOBAL_POSITION_INT = 33;
-        MAVLINK_MSG_ID_LOCAL_POSITION_NED  = 32;                % Accacio 12/08/2019 
-        MAVLINK_MSG_ID_SYS_STATUS          = 1;                 % Mathaus 12/08/2019 
+        MAVLINK_MSG_ID_ATTITUDE              = 30;
+        MAVLINK_MSG_ID_GLOBAL_POSITION_INT   = 33;
+        MAVLINK_MSG_ID_LOCAL_POSITION_NED    = 32;       
+        MAVLINK_MSG_ID_SYS_STATUS            =  1;       
+        MAVLINK_MSG_ID_NAV_CONTROLLER_OUTPUT = 62;
         
     end
 
@@ -85,8 +87,10 @@ classdef common
                     msg_type = mavlink_msg_global_position_int(); 
                 case common.MAVLINK_MSG_ID_LOCAL_POSITION_NED       % Accacio 12/08/2019
                     msg_type = mavlink_msg_local_position_ned();                     
-               case common.MAVLINK_MSG_ID_SYS_STATUS              % Mathaus 12/08/2019
-                    msg_type = mavlink_msg_sys_status();                     
+                case common.MAVLINK_MSG_ID_SYS_STATUS              % Mathaus 12/08/2019
+                    msg_type = mavlink_msg_sys_status(); 
+                case common.MAVLINK_MSG_ID_ATTITUDE
+                    msg_type = mavlink_msg_attitude();
                 otherwise
                     msg_type = [];
             end
