@@ -91,6 +91,8 @@ classdef common
                     msg_type = mavlink_msg_sys_status(); 
                 case common.MAVLINK_MSG_ID_ATTITUDE
                     msg_type = mavlink_msg_attitude();
+                case common.MAVLINK_MSG_ID_NAV_CONTROLLER_OUTPUT
+                    msg_type = mavlink_msg_nav_controller_output();
                 otherwise
                     msg_type = [];
             end

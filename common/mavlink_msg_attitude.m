@@ -2,12 +2,12 @@
 classdef mavlink_msg_attitude < mavlink_msg
     properties (SetAccess = protected)
         prop_time_boot_ms = uint32( zeros(1, 1 ) );
-        prop_roll         = int32( zeros(1, 1 ) );
-        prop_pitch        = int32( zeros(1, 1 ) );
-        prop_yaw          = int32( zeros(1, 1 ) );
-        prop_rollspeed    = int32( zeros(1, 1 ) );
-        prop_pitchspeed   = int16( zeros(1, 1 ) );
-        prop_yawspeed     = int16( zeros(1, 1 ) );
+        prop_roll         = single( zeros(1, 1 ) );
+        prop_pitch        = single( zeros(1, 1 ) );
+        prop_yaw          = single( zeros(1, 1 ) );
+        prop_rollspeed    = single( zeros(1, 1 ) );
+        prop_pitchspeed   = single( zeros(1, 1 ) );
+        prop_yawspeed     = single( zeros(1, 1 ) );
     end
     
     methods
@@ -23,7 +23,7 @@ classdef mavlink_msg_attitude < mavlink_msg
         function obj = split_payload( obj )
             obj = split_payload@mavlink_msg( obj );
         
-            obj.prop_time_boot_ms = obj.cast_from_bytes( obj.mav_payload(  1:4  ), 'uint32' ); % Testar com todos os crc extra e depois se nao der inverter esse parametro aqui
+            obj.prop_time_boot_ms = obj.cast_from_bytes( obj.mav_payload(  1:4  ), 'uint32' );
             obj.prop_roll         = obj.cast_from_bytes( obj.mav_payload(  5:8  ), 'single' );
             obj.prop_pitch        = obj.cast_from_bytes( obj.mav_payload(  9:12 ), 'single' );
             obj.prop_yaw          = obj.cast_from_bytes( obj.mav_payload( 13:16 ), 'single' );
