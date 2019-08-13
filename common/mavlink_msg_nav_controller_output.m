@@ -15,7 +15,7 @@ classdef mavlink_msg_nav_controller_output < mavlink_msg
         function obj = mavlink_msg_nav_controller_output()
             len       = uint8( 26 );
             msgid     = uint8( 62 );
-            crc_extra = uint8( 39 );
+            crc_extra = uint8( 183 );
         
             obj = obj@mavlink_msg( msgid, len, crc_extra );
         end
@@ -49,68 +49,68 @@ classdef mavlink_msg_nav_controller_output < mavlink_msg
         end
     
         % Gets e sets das propriedades em alto nivel
-        function obj = set_prop_time_boot_ms( obj, val )
-            obj.prop_time_boot_ms = obj.validate_input( val, 'single', 1 );
+        function obj = set_prop_nav_roll( obj, val )
+            obj.prop_nav_roll = obj.validate_input( val, 'single', 1 );
         end
         
-        function val = get_prop_time_boot_ms( obj )
-            val = obj.prop_time_boot_ms;
+        function val = get_prop_nav_roll( obj )
+            val = obj.prop_nav_roll;
         end
         
-                function obj = set_prop_time_boot_ms( obj, val )
-            obj.prop_time_boot_ms = obj.validate_input( val, 'single', 1 );
+        function obj = set_prop_nav_pitch( obj, val )
+            obj.prop_nav_pitch = obj.validate_input( val, 'single', 1 );
         end
         
-        function val = get_prop_time_boot_ms( obj )
-            val = obj.prop_time_boot_ms;
+        function val = get_prop_nav_pitch( obj )
+            val = obj.prop_nav_pitch;
         end
         
-                function obj = set_prop_time_boot_ms( obj, val )
-            obj.prop_time_boot_ms = obj.validate_input( val, 'single', 1 );
+        function obj = set_prop_alt_error( obj, val )
+            obj.prop_alt_error = obj.validate_input( val, 'single', 1 );
         end
         
-        function val = get_prop_time_boot_ms( obj )
-            val = obj.prop_time_boot_ms;
+        function val = get_prop_alt_error( obj )
+            val = obj.prop_alt_error;
         end
         
-                function obj = set_prop_time_boot_ms( obj, val )
-            obj.prop_time_boot_ms = obj.validate_input( val, 'single', 1 );
+        function obj = set_prop_aspd_error( obj, val )
+            obj.prop_aspd_error = obj.validate_input( val, 'single', 1 );
         end
         
-        function val = get_prop_time_boot_ms( obj )
-            val = obj.prop_time_boot_ms;
+        function val = get_prop_aspd_error( obj )
+            val = obj.prop_aspd_error;
         end
         
-                function obj = set_prop_time_boot_ms( obj, val )
-            obj.prop_time_boot_ms = obj.validate_input( val, 'single', 1 );
+        function obj = set_prop_xtrack_error( obj, val )
+            obj.prop_xtrack_error = obj.validate_input( val, 'single', 1 );
         end
         
-        function val = get_prop_time_boot_ms( obj )
-            val = obj.prop_time_boot_ms;
+        function val = get_prop_xtrack_error( obj )
+            val = obj.prop_xtrack_error;
         end
         
-                function obj = set_prop_time_boot_ms( obj, val )
-            obj.prop_time_boot_ms = obj.validate_input( val, 'single', 1 );
+        function obj = set_prop_nav_bearing( obj, val )
+            obj.prop_nav_bearing = obj.validate_input( val, 'int16', 1 );
         end
         
-        function val = get_prop_time_boot_ms( obj )
-            val = obj.prop_time_boot_ms;
+        function val = get_prop_nav_bearing( obj )
+            val = obj.prop_nav_bearing;
         end
         
-                function obj = set_prop_time_boot_ms( obj, val )
-            obj.prop_time_boot_ms = obj.validate_input( val, 'single', 1 );
+        function obj = set_prop_target_bearing( obj, val )
+            obj.prop_target_bearing = obj.validate_input( val, 'int16', 1 );
         end
         
-        function val = get_prop_time_boot_ms( obj )
-            val = obj.prop_time_boot_ms;
+        function val = get_prop_target_bearing( obj )
+            val = obj.prop_target_bearing;
         end
         
-                function obj = set_prop_time_boot_ms( obj, val )
-            obj.prop_time_boot_ms = obj.validate_input( val, 'single', 1 );
+        function obj = set_prop_wp_dist( obj, val )
+            obj.prop_wp_dist = obj.validate_input( val, 'uint16', 1 );
         end
         
-        function val = get_prop_time_boot_ms( obj )
-            val = obj.prop_time_boot_ms;
+        function val = get_prop_wp_dist( obj )
+            val = obj.prop_wp_dist;
         end
             
     end

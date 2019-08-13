@@ -25,7 +25,7 @@ t = tic;
 
 % Run for 30 seconds
 while toc(t) < 30 
-    if s_port.BytesAvailable > 1000
+    if s_port.BytesAvailable > 3000
         b = fread( s_port, s_port.BytesAvailable );
    
         [parse, msg] = parse.byte_stream( b' );
@@ -33,7 +33,7 @@ while toc(t) < 30
 %         v = msg{1}.get_heading();
 %         fprintf( 'Valor vindo no heading: %.5f\n', v )
         
-%         for i = 1:length( msg )
+        for i = 1:length( msg )
 %             fprintf( 'Msg (%d) %s\n', msg{i}.get_msgid(), class(msg{i}) );
 %             if msg{i}.get_msgid() == common.MAVLINK_MSG_ID_ATTITUDE
 %                 gps = msg{i};
@@ -43,7 +43,7 @@ while toc(t) < 30
 %                 fprintf('Vy  :     %.4f\t Vz     :   %.4f\n', gps.get_prop_vy(), gps.get_prop_vz())
 %                 fprintf('Heading:  %.4f \n\n\n', gps.get_prop_hdg)
 %             end
-%         end
+        end
         
         stats = parse.get_stats();
         fprintf( 'Total Msg: %d\t Msg Errors: %d\t Unknown Msg:%d\n', ...
